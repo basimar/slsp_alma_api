@@ -153,7 +153,7 @@ while (my $csv_line = $csv->getline( $csv_fh )) {
     
     # Hier wird der PUT-Request abgesetzt, die Antwort von Alma wird ausgegeben
     # Auskommentieren für Testrun
-    $ua_put->request($put); 
+    # $ua_put->request($put); 
 
     # Variante in der die API-Antwort ausgegeben wird
     # print Dumper($ua_put->request($put)); 
