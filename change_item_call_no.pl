@@ -44,7 +44,7 @@ my $log = Text::CSV->new ({
 
 # Header für CSV-Logfile ausgeben
 my(@log_heading) = ("MMS ID", "HOL ID", "Item ID", "Barcode", "Item call num old", "Item call num new");
-$log->print($log_fh, \@log_heading);    # Array ref!
+$log->say($log_fh, \@log_heading);    # Array ref!
 
 # CSV-Objekt für Inputfile initialisieren
 my $csv = Text::CSV->new ({
@@ -152,7 +152,11 @@ while (my $csv_line = $csv->getline( $csv_fh )) {
     my $ua_put = LWP::UserAgent->new();
     
     # Hier wird der PUT-Request abgesetzt, die Antwort von Alma wird ausgegeben
-    print Dumper($ua_put->request($put)); 
+    # Auskommentieren für Testrun
+    $ua_put->request($put); 
+
+    # Variante in der die API-Antwort ausgegeben wird
+    # print Dumper($ua_put->request($put)); 
    
     # Die unveränderten Exemplardaten werden pro Exemplar in einer eigenen Datei im Ordner log_$date abgespeichert 
     my $save_file = "./log_$date/$barcode.sav";
@@ -162,7 +166,7 @@ while (my $csv_line = $csv->getline( $csv_fh )) {
    
     # Das csv-Logfile wird mit den Daten des geänderten Exemplars ergänzt 
     my(@log_line) = ($mms_id, $hol_id, $item_id, $barcode, $call_no_old, $call_no_new );
-    $log->print($log_fh, \@log_line);    # Array ref!
+    $log->say($log_fh, \@log_line);    # Array ref!
 }
 
 # Prüfung ob die Input-Datei korrekt verarbeitet wurde
