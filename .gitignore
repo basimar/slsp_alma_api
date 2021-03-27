@@ -1,5 +1,5 @@
 apikey*
 *.csv
-log*
+*log*
 *.log
 nohup.out
