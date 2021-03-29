@@ -21,3 +21,4 @@ List of scripts:
 
 change_item_call_no.pl: Script for changing the item call number in Alma based on a csv list
 change_holding_call_no.pl: Script for changing the holding call number in Alma based on a csv list
+change_bibliographic.pl: Script with examples how to change bibliographic records in Alma based on a csv list
