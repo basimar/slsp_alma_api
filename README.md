@@ -20,4 +20,4 @@ sudo apt-get install libxml-libxml-perl
 List of scripts:
 
 change_item_call_no.pl: Script for changing the item call number in Alma based on a csv list
-
+change_holding_call_no.pl: Script for changing the holding call number in Alma based on a csv list
