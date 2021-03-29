@@ -99,7 +99,7 @@ while (my $csv_line = $csv->getline( $csv_fh )) {
     $holding_call_number->removeChildNodes();
     $holding_call_number->appendText($call_no_new);
     
-    # Das XML-Objekt mit den angepasssten Exemplardaten wird als String abgespeichert 
+    # Das XML-Objekt mit den angepasssten Holdingdaten wird als String abgespeichert 
     my $xml_new = $xml->toString;
 
     # Der API-Request zum Ändern der Holdingdaten wird mit den Modulen LWP::UserAgent und HTTP::Request abgesetzt. Mit "PUT" werden die Holdingdaten angepasst.
@@ -111,10 +111,10 @@ while (my $csv_line = $csv->getline( $csv_fh )) {
     
     # Hier wird der PUT-Request abgesetzt, die Antwort von Alma wird ausgegeben
     # Auskommentieren für Testrun
-    # $ua_put->request($put); 
+    $ua_put->request($put); 
 
     # Variante in der die API-Antwort ausgegeben wird
-    print Dumper($ua_put->request($put)); 
+    # print Dumper($ua_put->request($put)); 
    
     # Die unveränderten Holdingdaten werden pro Holding in einer eigenen Datei im Ordner log_$date abgespeichert 
     my $save_file = "./log_$date/$hol_id.sav";
@@ -122,7 +122,7 @@ while (my $csv_line = $csv->getline( $csv_fh )) {
     print $save_data $xml_old;
     close $save_data;
    
-    # Das csv-Logfile wird mit den Daten des geänderten Exemplars ergänzt 
+    # Das csv-Logfile wird mit den Daten des geänderten Holdings ergänzt 
     my(@log_line) = ($mms_id, $hol_id, $call_no_old, $call_no_new );
     $log->say($log_fh, \@log_line);    # Array ref!
 }
