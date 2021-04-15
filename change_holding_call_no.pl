@@ -20,6 +20,7 @@ mkdir "log_$date";
 # Datei mit API-Key öffnen und Key in Variable abspeichern
 open(my $key_fh, '<:encoding(utf8)', $key_file) or die "Could not open '$key_file' $!\n";
 my $api_key = <$key_fh>;
+chomp $api_key;
 close $key_fh;
 
 # Base-URL für Alma REST-API definieren (für alle IZs identisch)
